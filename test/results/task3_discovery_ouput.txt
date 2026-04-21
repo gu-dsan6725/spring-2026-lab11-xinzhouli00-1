@@ -1,0 +1,34 @@
+(a2a-lab) CuiCuiLee@CuiCuis-Huge spring-2026-lab11-xinzhouli00 % uv run python test/agent_discovery_test.py --debug
+
+Running agent discovery and booking workflow tests...
+======================================================================
+Test 1: Travel agent searches for flights (solo)
+Test 2: Travel agent discovers booking agent and completes booking
+======================================================================
+
+1. Testing flight search (travel agent solo)...
+2026-04-07 11:04:06,635,p74158,{connectionpool.py:241},DEBUG,Starting new HTTP connection (1): 127.0.0.1:10001
+2026-04-07 11:04:13,975,p74158,{connectionpool.py:544},DEBUG,http://127.0.0.1:10001 "POST / HTTP/1.1" 200 2774
+   [PASS] Travel agent searched for flights using its own tools
+   Response preview: I couldn't find any flights from New York to Los Angeles on December 20, 2025. This could mean:
+- No flights are currently scheduled for that route on that specific date
+- The flights may not be avail...
+
+2. Testing flight booking with agent discovery...
+2026-04-07 11:04:13,982,p74158,{connectionpool.py:241},DEBUG,Starting new HTTP connection (1): 127.0.0.1:10001
+2026-04-07 11:04:37,930,p74158,{connectionpool.py:544},DEBUG,http://127.0.0.1:10001 "POST / HTTP/1.1" 200 5920
+      [PASS] Booking agent discovered and invoked
+   Response preview: Unfortunately, the Flight Booking Agent didn't respond. This could be due to a temporary connectivity issue or the agent being unavailable.
+
+Here's what we know about the flight you want to book:
+- **...
+   [PASS] Complete booking workflow succeeded
+
+======================================================================
+All tests passed!
+======================================================================
+
+(a2a-lab) CuiCuiLee@GULC-WL-W0CLVM7 spring-2026-lab11-xinzhouli00 % # Discover agents through the registry
+curl -X POST "http://127.0.0.1:10001/api/discover-agents?query=book+flights"
+zsh: command not found: #
+{"query":"book flights","agents_found":1,"agents":[{"name":"Flight Booking Agent","description":"Flight booking and reservation management agent","path":"/flight-booking-agent","url":"http://127.0.0.1:10002","tags":["booking","flights","reservations"],"skills":[{"id":"check_availability","name":"check_availability","description":"Check seat availability for a specific flight.","tags":[],"examples":null,"input_modes":null,"output_modes":null,"security":null},{"id":"reserve_flight","name":"reserve_flight","description":"Reserve seats on a flight for passengers.","tags":[],"examples":null,"input_modes":null,"output_modes":null,"security":null},{"id":"confirm_booking","name":"confirm_booking","description":"Confirm and finalize a flight booking.","tags":[],"examples":null,"input_modes":null,"output_modes":null,"security":null},{"id":"process_payment","name":"process_payment","description":"Process payment for a booking (simulated).","tags":[],"examples":null,"input_modes":null,"output_modes":null,"security":null},{"id":"manage_reservation","name":"manage_reservation","description":"Update, view, or cancel existing reservations.","tags":[],"examples":null,"input_modes":null,"output_modes":null,"security":null}],"is_enabled":true,"trust_level":"verified","visibility":"public","relevance_score":0.95}]}%   

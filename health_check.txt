@@ -1,0 +1,4 @@
+(a2a-lab) CuiCuiLee@CuiCuis-Huge spring-2026-lab11-xinzhouli00 % curl http://127.0.0.1:7861/health
+curl http://127.0.0.1:10001/ping
+curl http://127.0.0.1:10002/ping
+{"status":"healthy","service":"registry-stub"}{"status":"healthy"}{"status":"healthy"}% 
